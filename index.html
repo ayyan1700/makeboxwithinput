@@ -1,0 +1,193 @@
+
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Generator</title>
+    <style>
+   
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+   
+        body {
+            background-color: #c0bbc2;
+    
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2rem;
+            color: rgb(86, 75, 97) ;
+            margin-top: 30px;
+        }
+
+      
+        .container {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            width: auto;
+            height: auto;
+            margin: 0 auto;
+            padding: 20px;
+           
+        }
+
+        label {
+            font-size: 1rem;
+            margin-top: 10px;
+            display: block;
+            text-align: left;
+            width: 100%;
+            color: rgb(86, 75, 97) ;
+            max-width: 300px;
+            
+        }
+
+        input[type="text"] {
+            width: 100%;
+            color: rgb(86, 75, 97) ;
+            max-width: 300px;
+            padding: 8px;
+            margin: 5px 0 15px 0;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="text"]:focus {
+            border-color: #0056b3;
+            outline: none;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1.1rem;
+            background-color: rgb(86, 75, 97) ;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #9b7ca7;
+        }
+
+   
+        #boxPreview {
+            margin-top: 20px;
+            width: 150px;
+            height: 150px;
+            background-color: lightgrey;
+            border: 1px solid black;
+            box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+            border-radius: 0;
+            transition: all 0.3s ease-in-out;
+        }
+
+    
+        #generatedCode {
+            margin-top: 20px;
+            background-color: #f7f7f7;
+            padding: 15px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            width: 100%;
+            max-width: 300px;
+            border-radius: 30px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        #boxPreview{
+            width: 200px;
+            height:200px ;
+            background-color:rgb(86, 75, 97) ;
+            border: 1px solid black ;
+            box-shadow: 0px 1px 10px ;
+            border-radius:20px ;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="containers">
+        <h1>CSS Box Generator</h1>
+
+       
+        <label for="width">Width (e.g., 200px):</label>
+        <input type="text" id="width" placeholder="Enter width" />
+
+        <label for="height">Height (e.g., 200px):</label>
+        <input type="text" id="height" placeholder="Enter height" />
+
+        <label for="backgroundColor">Background Color (e.g., red):</label>
+        <input type="text" id="backgroundColor" placeholder="Enter background color" />
+
+        <label for="borderColor">Border Color (e.g., blue):</label>
+        <input type="text" id="borderColor" placeholder="Enter border color" />
+
+        <label for="boxShadow">Box Shadow (e.g., 5px 5px 10px):</label>
+        <input type="text" id="boxShadow" placeholder="Enter box shadow" />
+
+        <label for="boxShadowColor">Box Shadow Color (e.g., grey):</label>
+        <input type="text" id="boxShadowColor" placeholder="Enter box shadow color" />
+
+        <label for="borderRadius">Border Radius (e.g., 10px):</label>
+        <input type="text" id="borderRadius" placeholder="Enter border radius" />
+
+        <button onclick="generateCode()">Generate Code</button>
+    </div>
+      
+        <div id="boxPreview"></div>
+
+        <pre id="generatedCode"><h3> Code generated in here </h3></pre>
+
+   
+</div>
+    <script>
+        function generateCode() {
+         
+            var width = document.getElementById('width').value;
+            var height = document.getElementById('height').value;
+            var backgroundColor = document.getElementById('backgroundColor').value;
+            var borderColor = document.getElementById('borderColor').value;
+            var boxShadow = document.getElementById('boxShadow').value;
+            var boxShadowColor = document.getElementById('boxShadowColor').value;
+            var borderRadius = document.getElementById('borderRadius').value;
+            var boxPreview = document.getElementById('boxPreview');
+
+            var cssCode = `
+            width: ${width};
+            height: ${height};
+            background-color: ${backgroundColor};
+            border: 1px solid ${borderColor};
+            box-shadow: ${boxShadow} ${boxShadowColor};
+            border-radius: ${borderRadius};
+            `;
+
+            boxPreview.style.width = width;
+            boxPreview.style.height = height;
+            boxPreview.style.backgroundColor = backgroundColor;
+            boxPreview.style.border = `1px solid ${borderColor}`;
+            boxPreview.style.boxShadow = `${boxShadow} ${boxShadowColor}`;
+            boxPreview.style.borderRadius = borderRadius;
+
+            document.getElementById('generatedCode').textContent = cssCode;
+        }
+    </script>
+
+</body>
+</html>
